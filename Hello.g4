@@ -1,12 +1,13 @@
 grammar Hello;
 
-// Tokens
-MUL: '*';
-DIV: '/';
-ADD: '+';
-SUB: '-';
-NUMBER: [0-9]+;
-WHITESPACE: [ \r\n\t]+ -> skip;
+import CommonLexerRules;
+// // Tokens
+// MUL: '*';
+// DIV: '/';
+// ADD: '+';
+// SUB: '-';
+// NUMBER: [0-9]+;
+// WHITESPACE: [ \r\n\t]+ -> skip;
 
 // Rules
 start: expr EOF;
