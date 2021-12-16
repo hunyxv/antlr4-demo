@@ -1,8 +1,8 @@
 package main
 
 import (
+	"antlr4-demo/1-calculator/parser"
 	"fmt"
-	"hello/parser"
 
 	"github.com/antlr/antlr4/runtime/Go/antlr"
 )

@@ -1,5 +1,3 @@
-// 词法符号规则 commonLexerRules.g4
-
 lexer grammar CommonLexerRules; // lexer grammer 表示这里指存放词法符号规则
 
 MUL: '*';

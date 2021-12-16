@@ -1,8 +1,8 @@
 package main
 
 import (
+	"antlr4-demo/1-calculator/parser"
 	"errors"
-	"hello/parser"
 	"log"
 	"strconv"
 
@@ -13,7 +13,7 @@ import (
 type CalVisitor struct {
 	parser.BaseHelloVisitor
 	stack []int
-	i int
+	i     int
 }
 
 func (v *CalVisitor) push(i int) {

@@ -1,4 +1,4 @@
-module hello
+module antlr4-demo
 
 go 1.17
 
