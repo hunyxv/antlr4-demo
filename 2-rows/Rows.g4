@@ -21,6 +21,6 @@ row
         }
 	)+;
 
-TAB: '\t' -> skip; // match but don't pass to the parser
-NL: '\r'? '\n'; // match and pass to the parser
-STUFF: ~[\t\r\n]+; // match any chars except tab, newline
+TAB: '\t' -> skip; // match but don't pass to the parser 
+NL: '\r'? '\n'; // match and pass to the parser // 换行符
+STUFF: ~[\t\r\n]+; // match any chars except tab, newline 对应于每行中每个单词
