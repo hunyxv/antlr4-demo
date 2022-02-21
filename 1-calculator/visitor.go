@@ -11,7 +11,7 @@ import (
 
 // 访问者模式
 type CalVisitor struct {
-	parser.BaseHelloVisitor
+	parser.BaseExprVisitor
 	stack []int
 	i     int
 }
@@ -66,9 +66,9 @@ func (v *CalVisitor) VisitMulDiv(ctx *parser.MulDivContext) interface{} {
 		panic(err)
 	}
 	switch token.GetTokenType() {
-	case parser.HelloParserMUL:
+	case parser.ExprParserMUL:
 		v.push(left * right)
-	case parser.HelloParserDIV:
+	case parser.ExprParserDIV:
 		v.push(left / right)
 	default:
 		panic("exceptions error")
@@ -93,9 +93,9 @@ func (v *CalVisitor) VisitAddSub(ctx *parser.AddSubContext) interface{} {
 		panic(err)
 	}
 	switch token.GetTokenType() {
-	case parser.HelloParserADD:
+	case parser.ExprParserADD:
 		v.push(left + right)
-	case parser.HelloParserSUB:
+	case parser.ExprParserSUB:
 		v.push(left - right)
 	default:
 		panic("exceptions error")

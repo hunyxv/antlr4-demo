@@ -10,7 +10,7 @@ import (
 )
 
 type CalcListener struct {
-	*parser.BaseHelloListener
+	*parser.BaseExprListener
 
 	stack []int
 	i     int
@@ -52,9 +52,9 @@ func (l *CalcListener) ExitMulDiv(ctx *parser.MulDivContext) {
 		panic(err)
 	}
 	switch token.GetTokenType() {
-	case parser.HelloParserMUL:
+	case parser.ExprParserMUL:
 		l.push(left * right)
-	case parser.HelloParserDIV:
+	case parser.ExprParserDIV:
 		l.push(left / right)
 	default:
 		panic("exceptions error")
@@ -74,9 +74,9 @@ func (l *CalcListener) ExitAddSub(ctx *parser.AddSubContext) {
 		panic(err)
 	}
 	switch token.GetTokenType() {
-	case parser.HelloParserADD:
+	case parser.ExprParserADD:
 		l.push(left + right)
-	case parser.HelloParserSUB:
+	case parser.ExprParserSUB:
 		l.push(left - right)
 	default:
 		panic("exceptions error")

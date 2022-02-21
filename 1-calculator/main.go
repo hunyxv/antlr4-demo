@@ -3,6 +3,7 @@ package main
 import (
 	"antlr4-demo/1-calculator/parser"
 	"fmt"
+	"time"
 
 	"github.com/antlr/antlr4/runtime/Go/antlr"
 )
@@ -10,10 +11,10 @@ import (
 func runVisitor() {
 	stream := antlr.NewInputStream("(1 + 2) * (3+2) *  (2  - 3)")
 
-	lexer := parser.NewHelloLexer(stream)
+	lexer := parser.NewExprLexer(stream)
 	tokenStream := antlr.NewCommonTokenStream(lexer, antlr.TokenDefaultChannel)
 
-	p := parser.NewHelloParser(tokenStream)
+	p := parser.NewExprParser(tokenStream)
 
 	visitor := &CalVisitor{}
 	p.Start().Accept(visitor)
@@ -28,9 +29,9 @@ func runVisitor() {
 
 func runListener() {
 	stream := antlr.NewInputStream("(1 + 2) * (3+2) *  (2  - 3)")
-	lexer := parser.NewHelloLexer(stream)
+	lexer := parser.NewExprLexer(stream)
 	tokenStream := antlr.NewCommonTokenStream(lexer, antlr.TokenDefaultChannel)
-	p := parser.NewHelloParser(tokenStream)
+	p := parser.NewExprParser(tokenStream)
 	listener := &CalcListener{}
 	antlr.ParseTreeWalkerDefault.Walk(listener, p.Start())
 
@@ -42,7 +43,10 @@ func runListener() {
 }
 
 func main() {
+	now := time.Now()
 	runVisitor()
-	fmt.Print("\n --------------------\n\n")
+	fmt.Print("\n ----------", time.Since(now) ,"----------\n\n")
+	now = time.Now()
 	runListener()
+	fmt.Print("\n ----------", time.Since(now) ,"----------\n\n")
 }
